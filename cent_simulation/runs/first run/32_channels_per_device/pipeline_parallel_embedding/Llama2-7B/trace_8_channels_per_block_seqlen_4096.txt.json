@@ -1,0 +1,12 @@
+{
+    "WR_Q": 0,
+    "STORE_FOR_WR_Q": 0,
+    "WR_K": 0,
+    "STORE_FOR_WR_K": 0,
+    "EWMUL_Q": 0,
+    "EWMUL_K": 0,
+    "RD_Q": 0,
+    "LOAD_FOR_RD_Q": 0,
+    "RD_K": 0,
+    "LOAD_FOR_RD_K": 0
+}

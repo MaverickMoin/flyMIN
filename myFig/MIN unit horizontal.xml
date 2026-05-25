@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Single-Stage Permutation Network for RoPE — HORIZONTAL LAYOUT
+  ==============================================================
+  Flow: Inputs (top) → Switches (middle row) → Outputs (bottom)
+  8 pairs of BF16 elements (N=16), each pair = one 2×2 swap switch
+
+  Editable parameters:
+    PAIR_PITCH   = 80    — horizontal spacing between switch centres
+    SWITCH_W     = 60    — width of each switch box
+    SWITCH_H     = 36    — height of each switch box
+    SWITCH_Y     = 180   — y-centre of switch row
+    INPUT_Y      = 100   — y of input wire endpoints
+    OUTPUT_Y     = 260   — y of output wire endpoints
+    LEFT_MARGIN  = 60    — x of first switch centre
+-->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="820"
+  height="340"
+  viewBox="0 0 820 340"
+  font-family="'Helvetica Neue', Arial, sans-serif"
+>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5"
+            markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#444" stroke-width="1.6"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <style>
+      svg { background: #ffffff; }
+
+      .wire        { stroke: #444; stroke-width: 1.2; fill: none; }
+      .wire-swap   { stroke: #0F6E56; stroke-width: 1.4; fill: none; }
+
+      .stage-box {
+        fill: #f9fbfb;
+        stroke: #888;
+        stroke-width: 1.5;
+        stroke-dasharray: 6 4;
+      }
+
+      .sw-box {
+        fill: #E1F5EE;
+        stroke: #0F6E56;
+        stroke-width: 1;
+      }
+      .sw-label {
+        font-size: 18px;
+        fill: #085041;
+        font-weight: 700;
+        text-anchor: middle;
+        dominant-baseline: central;
+      }
+      .sw-sub {
+        font-size: 13.5px;
+        fill: #0F6E56;
+        text-anchor: middle;
+        dominant-baseline: central;
+      }
+
+      /* Input labels (top) */
+      .lbl-in {
+        font-size: 18px;
+        fill: #222;
+        text-anchor: middle;
+        dominant-baseline: auto;
+      }
+      /* Output labels (bottom) — swapped, teal */
+      .lbl-out {
+        font-size: 18px;
+        fill: #085041;
+        font-weight: 700;
+        text-anchor: middle;
+        dominant-baseline: hanging;
+      }
+
+      /* Pair index label */
+      .pair-lbl {
+        font-size: 13.5px;
+        fill: #888;
+        text-anchor: middle;
+        dominant-baseline: hanging;
+      }
+
+      /* Square bracket brace */
+      .brace { stroke: #888; stroke-width: 1; fill: none; stroke-linecap: square; }
+
+      /* Row labels */
+      .row-lbl {
+        font-size: 16.5px;
+        fill: #555;
+        font-weight: 600;
+        text-anchor: end;
+        dominant-baseline: central;
+      }
+
+      /* Title */
+      .title    { font-size: 21px; fill: #111; font-weight: 700; text-anchor: middle; }
+      .subtitle { font-size: 15px; fill: #666; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <!-- Wrapping diagram elements in a group to translate them 60px right -->
+  <g transform="translate(60, 0)">
+    
+    <!-- ── Stage Enclosure Box ── -->
+    <rect class="stage-box" x="60" y="142" width="640" height="76" rx="6" />
+
+    <!-- ── Row labels ── -->
+    <text class="row-lbl" x="48" y="100">Inputs</text>
+    <text class="row-lbl" x="48" y="180">MIN unit</text>
+    <text class="row-lbl" x="48" y="266">Outputs</text>
+
+    <!-- ════════════════════════════════════════
+         PAIR 0  cx=100  inputs x=86,114
+    ════════════════════════════════════════ -->
+    <text class="lbl-in" x="86"  y="94">x₀</text>
+    <text class="lbl-in" x="114" y="94">x₁</text>
+    <line class="wire" x1="86"  y1="100" x2="86"  y2="162"/>
+    <line class="wire" x1="114" y1="100" x2="114" y2="162"/>
+    
+    <rect class="sw-box" x="70" y="162" width="60" height="36" rx="5"/>
+    <text class="sw-label" x="100" y="174">2×2</text>
+    <text class="sw-sub"   x="100" y="192">switch</text>
+    
+    <line class="wire-swap" x1="86"  y1="198" x2="86"  y2="260" marker-end="url(#arr)"/>
+    <line class="wire-swap" x1="114" y1="198" x2="114" y2="260" marker-end="url(#arr)"/>
+    
+    <text class="lbl-out" x="86"  y="266">x₁</text>
+    <text class="lbl-out" x="114" y="266">x₀</text>
+    <text class="pair-lbl" x="100" y="290" text-anchor="middle">pair 0</text>
+    <polyline class="brace" points="86,282 86,286 114,286 114,282"/>
+
+    <!-- ════ PAIR 1  cx=180 ════ -->
+    <text class="lbl-in" x="166" y="94">x₂</text>
+    <text class="lbl-in" x="194" y="94">x₃</text>
+    <line class="wire" x1="166" y1="100" x2="166" y2="162"/>
+    <line class="wire" x1="194" y1="100" x2="194" y2="162"/>
+    
+    <rect class="sw-box" x="150" y="162" width="60" height="36" rx="5"/>
+    <text class="sw-label" x="180" y="174">2×2</text>
+    <text class="sw-sub"   x="180" y="192">switch</text>
+    
+    <line class="wire-swap" x1="166" y1="198" x2="166" y2="260" marker-end="url(#arr)"/>
+    <line class="wire-swap" x1="194" y1="198" x2="194" y2="260" marker-end="url(#arr)"/>
+    
+    <text class="lbl-out" x="166" y="266">x₃</text>
+    <text class="lbl-out" x="194" y="266">x₂</text>
+    <text class="pair-lbl" x="180" y="290" text-anchor="middle">pair 1</text>
+    <polyline class="brace" points="166,282 166,286 194,286 194,282"/>
+
+    <!-- ════ PAIR 2  cx=260 ════ -->
+    <text class="lbl-in" x="246" y="94">x₄</text>
+    <text class="lbl-in" x="274" y="94">x₅</text>
+    <line class="wire" x1="246" y1="100" x2="246" y2="162"/>
+    <line class="wire" x1="274" y1="100" x2="274" y2="162"/>
+    
+    <rect class="sw-box" x="230" y="162" width="60" height="36" rx="5"/>
+    <text class="sw-label" x="260" y="174">2×2</text>
+    <text class="sw-sub"   x="260" y="192">switch</text>
+    
+    <line class="wire-swap" x1="246" y1="198" x2="246" y2="260" marker-end="url(#arr)"/>
+    <line class="wire-swap" x1="274" y1="198" x2="274" y2="260" marker-end="url(#arr)"/>
+    
+    <text class="lbl-out" x="246" y="266">x₅</text>
+    <text class="lbl-out" x="274" y="266">x₄</text>
+    <text class="pair-lbl" x="260" y="290" text-anchor="middle">pair 2</text>
+    <polyline class="brace" points="246,282 246,286 274,286 274,282"/>
+
+    <!-- ════ PAIR 3  cx=340 ════ -->
+    <text class="lbl-in" x="326" y="94">x₆</text>
+    <text class="lbl-in" x="354" y="94">x₇</text>
+    <line class="wire" x1="326" y1="100" x2="326" y2="162"/>
+    <line class="wire" x1="354" y1="100" x2="354" y2="162"/>
+    
+    <rect class="sw-box" x="310" y="162" width="60" height="36" rx="5"/>
+    <text class="sw-label" x="340" y="174">2×2</text>
+    <text class="sw-sub"   x="340" y="192">switch</text>
+    
+    <line class="wire-swap" x1="326" y1="198" x2="326" y2="260" marker-end="url(#arr)"/>
+    <line class="wire-swap" x1="354" y1="198" x2="354" y2="260" marker-end="url(#arr)"/>
+    
+    <text class="lbl-out" x="326" y="266">x₇</text>
+    <text class="lbl-out" x="354" y="266">x₆</text>
+    <text class="pair-lbl" x="340" y="290" text-anchor="middle">pair 3</text>
+    <polyline class="brace" points="326,282 326,286 354,286 354,282"/>
+
+    <!-- ════ PAIR 4  cx=420 ════ -->
+    <text class="lbl-in" x="406" y="94">x₈</text>
+    <text class="lbl-in" x="434" y="94">x₉</text>
+    <line class="wire" x1="406" y1="100" x2="406" y2="162"/>
+    <line class="wire" x1="434" y1="100" x2="434" y2="162"/>
+    
+    <rect class="sw-box" x="390" y="162" width="60" height="36" rx="5"/>
+    <text class="sw-label" x="420" y="174">2×2</text>
+    <text class="sw-sub"   x="420" y="192">switch</text>
+    
+    <line class="wire-swap" x1="406" y1="198" x2="406" y2="260" marker-end="url(#arr)"/>
+    <line class="wire-swap" x1="434" y1="198" x2="434" y2="260" marker-end="url(#arr)"/>
+    
+    <text class="lbl-out" x="406" y="266">x₉</text>
+    <text class="lbl-out" x="434" y="266">x₈</text>
+    <text class="pair-lbl" x="420" y="290" text-anchor="middle">pair 4</text>
+    <polyline class="brace" points="406,282 406,286 434,286 434,282"/>
+
+    <!-- ════ PAIR 5  cx=500 ════ -->
+    <text class="lbl-in" x="486" y="94">x₁₀</text>
+    <text class="lbl-in" x="514" y="94">x₁₁</text>
+    <line class="wire" x1="486" y1="100" x2="486" y2="162"/>
+    <line class="wire" x1="514" y1="100" x2="514" y2="162"/>
+    
+    <rect class="sw-box" x="470" y="162" width="60" height="36" rx="5"/>
+    <text class="sw-label" x="500" y="174">2×2</text>
+    <text class="sw-sub"   x="500" y="192">switch</text>
+    
+    <line class="wire-swap" x1="486" y1="198" x2="486" y2="260" marker-end="url(#arr)"/>
+    <line class="wire-swap" x1="514" y1="198" x2="514" y2="260" marker-end="url(#arr)"/>
+    
+    <text class="lbl-out" x="486" y="266">x₁₁</text>
+    <text class="lbl-out" x="514" y="266">x₁₀</text>
+    <text class="pair-lbl" x="500" y="290" text-anchor="middle">pair 5</text>
+    <polyline class="brace" points="486,282 486,286 514,286 514,282"/>
+
+    <!-- ════ PAIR 6  cx=580 ════ -->
+    <text class="lbl-in" x="566" y="94">x₁₂</text>
+    <text class="lbl-in" x="594" y="94">x₁₃</text>
+    <line class="wire" x1="566" y1="100" x2="566" y2="162"/>
+    <line class="wire" x1="594" y1="100" x2="594" y2="162"/>
+    
+    <rect class="sw-box" x="550" y="162" width="60" height="36" rx="5"/>
+    <text class="sw-label" x="580" y="174">2×2</text>
+    <text class="sw-sub"   x="580" y="192">switch</text>
+    
+    <line class="wire-swap" x1="566" y1="198" x2="566" y2="260" marker-end="url(#arr)"/>
+    <line class="wire-swap" x1="594" y1="198" x2="594" y2="260" marker-end="url(#arr)"/>
+    
+    <text class="lbl-out" x="566" y="266">x₁₃</text>
+    <text class="lbl-out" x="594" y="266">x₁₂</text>
+    <text class="pair-lbl" x="580" y="290" text-anchor="middle">pair 6</text>
+    <polyline class="brace" points="566,282 566,286 594,286 594,282"/>
+
+    <!-- ════ PAIR 7  cx=660 ════ -->
+    <text class="lbl-in" x="646" y="94">x₁₄</text>
+    <text class="lbl-in" x="674" y="94">x₁₅</text>
+    <line class="wire" x1="646" y1="100" x2="646" y2="162"/>
+    <line class="wire" x1="674" y1="100" x2="674" y2="162"/>
+    
+    <rect class="sw-box" x="630" y="162" width="60" height="36" rx="5"/>
+    <text class="sw-label" x="660" y="174">2×2</text>
+    <text class="sw-sub"   x="660" y="192">switch</text>
+    
+    <line class="wire-swap" x1="646" y1="198" x2="646" y2="260" marker-end="url(#arr)"/>
+    <line class="wire-swap" x1="674" y1="198" x2="674" y2="260" marker-end="url(#arr)"/>
+    
+    <text class="lbl-out" x="646" y="266">x₁₅</text>
+    <text class="lbl-out" x="674" y="266">x₁₄</text>
+    <text class="pair-lbl" x="660" y="290" text-anchor="middle">pair 7</text>
+    <polyline class="brace" points="646,282 646,286 674,286 674,282"/>
+  </g>
+</svg>

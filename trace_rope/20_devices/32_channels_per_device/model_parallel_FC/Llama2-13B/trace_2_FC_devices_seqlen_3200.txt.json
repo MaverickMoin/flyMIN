@@ -1,0 +1,12 @@
+{
+    "rd_q_burst": 640,
+    "store_for_rd_q_burst": 640,
+    "rd_k_burst": 640,
+    "store_for_rd_k_burst": 640,
+    "EWMUL_Q": 320,
+    "EWMUL_K": 320,
+    "inv_q_burst": 640,
+    "store_for_inv_q_burst": 640,
+    "inv_k_burst": 640,
+    "store_for_inv_k_burst": 640
+}

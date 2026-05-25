@@ -1,0 +1,35 @@
+AiM ISR_MIN_GB 5 0xffffffff 0 78
+AiM ISR_MIN_GB 5 0xffffffff 1 78
+AiM ISR_MIN_GB 5 0xffffffff 2 78
+AiM ISR_MIN_GB 5 0xffffffff 3 78
+AiM COPY_GBBK 5 0xffffffff 0 78
+AiM COPY_GBBK 5 0xffffffff 1 78
+AiM COPY_GBBK 5 0xffffffff 2 78
+AiM COPY_GBBK 5 0xffffffff 3 78
+AiM ISR_MIN_GB 5 0xffffffff 0 79
+AiM ISR_MIN_GB 5 0xffffffff 1 79
+AiM ISR_MIN_GB 5 0xffffffff 2 79
+AiM ISR_MIN_GB 5 0xffffffff 3 79
+AiM COPY_GBBK 5 0xffffffff 0 79
+AiM COPY_GBBK 5 0xffffffff 1 79
+AiM COPY_GBBK 5 0xffffffff 2 79
+AiM COPY_GBBK 5 0xffffffff 3 79
+AiM EWMUL 320 0xffffffff 78
+AiM EWMUL 320 0xffffffff 79
+AiM ISR_MIN_GB 5 0xffffffff 2 78
+AiM ISR_MIN_GB 5 0xffffffff 3 78
+AiM ISR_MIN_GB 5 0xffffffff 4 78
+AiM ISR_MIN_GB 5 0xffffffff 5 78
+AiM COPY_GBBK 5 0xffffffff 2 78
+AiM COPY_GBBK 5 0xffffffff 3 78
+AiM COPY_GBBK 5 0xffffffff 4 78
+AiM COPY_GBBK 5 0xffffffff 5 78
+AiM ISR_MIN_GB 5 0xffffffff 2 79
+AiM ISR_MIN_GB 5 0xffffffff 3 79
+AiM ISR_MIN_GB 5 0xffffffff 4 79
+AiM ISR_MIN_GB 5 0xffffffff 5 79
+AiM COPY_GBBK 5 0xffffffff 2 79
+AiM COPY_GBBK 5 0xffffffff 3 79
+AiM COPY_GBBK 5 0xffffffff 4 79
+AiM COPY_GBBK 5 0xffffffff 5 79
+AiM EOC
